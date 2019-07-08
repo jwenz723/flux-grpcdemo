@@ -65,3 +65,11 @@ When Flux has write access to your repository it will do the following:
 * installs Prometheus Operator Helm Release
 * installs grpcdemo-client Helm Release
 * installs grpcdemo-server Helm Release
+
+### Cleanup
+
+To delete everything that was installed (istio, promop, grpcdemo-client, grpcdemo-server, flux):
+
+```
+./scripts/cleanup.sh
+```
