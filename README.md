@@ -1,11 +1,9 @@
 # flux-grpcdemo
 
-A weave flux deployment of a demo grpc server/client with prometheus-operator and istio. [Inspiration](https://github.com/stefanprodan/gitops-istio)
+A weave flux deployment of a demo grpc server/client with prometheus-operator. [Inspiration](https://github.com/stefanprodan/gitops-istio)
 
 Components:
 
-* **Istio** service mesh
-    * manages the traffic flows between microservices, enforcing access policies and aggregating telemetry data
 * **Prometheus** monitoring system  
     * time series database that collects and stores the service mesh metrics
 * **Flux** GitOps operator
@@ -13,8 +11,6 @@ Components:
     * scans container registries and deploys new images
 * **Helm Operator** CRD controller
     * automates Helm chart releases
-* **Flagger** progressive delivery operator
-    * automates the promotion of canary deployments using Istio routing for traffic shifting and Prometheus metrics for canary analysis
 
 ### Prerequisites
 
@@ -39,8 +35,8 @@ helm init --service-account tiller --wait
 Fork this repository and clone it:
 
 ```bash
-git clone https://github.com/<YOUR-USERNAME>/gitops-istio
-cd gitops-istio
+git clone https://github.com/<YOUR-USERNAME>/flux-grpcdemo
+cd flux-grpcdemo
 ```
 
 ### Cluster bootstrap
@@ -59,16 +55,13 @@ check _Allow write access_, paste the Flux public key and click _Add key_.
 
 When Flux has write access to your repository it will do the following:
 
-* creates the `istio-system` and `prod` namespaces
-* creates the Istio CRDs
-* installs Istio Helm Release
 * installs Prometheus Operator Helm Release
 * installs grpcdemo-client Helm Release
 * installs grpcdemo-server Helm Release
 
 ### Cleanup
 
-To delete everything that was installed (istio, promop, grpcdemo-client, grpcdemo-server, flux):
+To delete everything that was installed (promop, grpcdemo-client, grpcdemo-server, flux):
 
 ```
 ./scripts/cleanup.sh

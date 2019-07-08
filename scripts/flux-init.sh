@@ -13,7 +13,7 @@ if [[ ! -x "$(command -v helm)" ]]; then
 fi
 
 REPO_ROOT=$(git rev-parse --show-toplevel)
-REPO_URL=${1:-git@github.com:stefanprodan/gitops-istio}
+REPO_URL=${1:-git@github.com:jwenz723/flux-grpcdemo}
 REPO_BRANCH=master
 TEMP=${REPO_ROOT}/temp
 
@@ -36,14 +36,6 @@ helmOperator:
         name: stable
         password: ""
         url: https://kubernetes-charts.storage.googleapis.com
-        username: ""
-      - caFile: ""
-        cache: istio.io-index.yaml
-        certFile: ""
-        keyFile: ""
-        name: istio.io
-        password: ""
-        url: https://storage.googleapis.com/istio-release/releases/1.2.2/charts
         username: ""
 EOF
 
