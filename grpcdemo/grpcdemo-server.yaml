@@ -1,0 +1,14 @@
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: grpcdemo-server
+  namespace: grpcdemo
+  annotations:
+    flux.weave.works/automated: "false"
+    flux.weave.works/tag.chart-image: semver:~0
+spec:
+  releaseName: grpcdemo-server
+  chart:
+    git: git@github.com:jwenz723/grpcdemo
+    ref: master
+    path: helm/grpcdemo-server
