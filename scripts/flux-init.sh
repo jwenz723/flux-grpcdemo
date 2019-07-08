@@ -45,14 +45,6 @@ helmOperator:
         password: ""
         url: https://storage.googleapis.com/istio-release/releases/1.2.2/charts
         username: ""
-      - caFile: ""
-        cache: flagger-index.yaml
-        certFile: ""
-        keyFile: ""
-        name: flagger
-        password: ""
-        url: https://flagger.app
-        username: ""
 EOF
 
 helm repo add weaveworks https://weaveworks.github.io/flux
