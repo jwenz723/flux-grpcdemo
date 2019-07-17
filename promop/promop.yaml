@@ -15,21 +15,32 @@ spec:
   values:
     # The following config is necessary for AWS EKS:
     # Not monitoring etcd, kube-scheduler, or kube-controller-manager because it is managed by EKS
-    coreDns:
+    # coreDns:
+    #   service:
+    #     selector:
+    #       k8s-app: kube-dns
+    # defaultRules:
+    #   rules:
+    #     etcd: false
+    #     kubeScheduler: false
+    # kubeControllerManager:
+    #   enabled: false
+    # kubeEtcd:
+    #   enabled: false
+    # kubeScheduler:
+    #   enabled: false
+    # end AWS EKS config
+
+    # this is needed for minikube
+    kubelet:
+      serviceMonitor:
+        https: false
+
+    kubeEtcd:
       service:
         selector:
-          k8s-app: kube-dns
-    defaultRules:
-      rules:
-        etcd: false
-        kubeScheduler: false
-    kubeControllerManager:
-      enabled: false
-    kubeEtcd:
-      enabled: false
-    kubeScheduler:
-      enabled: false
-    # end AWS EKS config
+          k8s-app: null
+          component: etcd
 
     grafana:
       sidecar:
