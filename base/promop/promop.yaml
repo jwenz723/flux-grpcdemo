@@ -49,6 +49,7 @@ spec:
           searchNamespace: ALL
     prometheus:
       prometheusSpec:
+        replicas: 1
         ruleNamespaceSelector:
           any: true
         serviceMonitorSelector:

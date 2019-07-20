@@ -12,3 +12,5 @@ spec:
     git: git@github.com:jwenz723/grpcdemo
     ref: master
     path: helm/grpcdemo-client
+  values:
+    replicaCount: 1
