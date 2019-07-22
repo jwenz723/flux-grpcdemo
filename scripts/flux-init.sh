@@ -27,7 +27,7 @@ GITHUB_USER=${1:-jwenz723}
 REPO_NAME=flux-grpcdemo
 REPO_URL=git@github.com:${GITHUB_USER}/${REPO_NAME}
 REPO_BRANCH=master
-GIT_PATH=${2:-staging}
+GIT_PATH=${2:-overlays/staging}
 TEMP=${REPO_ROOT}/temp
 
 echo "GITHUB_USER: $GITHUB_USER"
@@ -62,7 +62,7 @@ helm upgrade -i flux --wait \
 --set git.url=${REPO_URL} \
 --set git.branch=${REPO_BRANCH} \
 --set git.pollInterval=15s \
---set git.path=${GIT_PATH} \
+--set git.path="${GIT_PATH}" \
 --set helmOperator.chartsSyncInterval=15s \
 --set registry.pollInterval=15s \
 --set additionalArgs={"--manifest-generation=true"} \
